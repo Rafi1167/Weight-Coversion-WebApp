@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Weight Converter App</title>
+    <!-- CSS Styling -->
+    <style>
+        body{
+            margin-top: 70px;
+            background: black;
+            color: white;
+             }
+        .card{
+            margin: 5px;
+        }   
+        .card-block{
+            padding-left: 15px;
+        } 
+        #unitMenu{
+            margin: 5px;
+        }
+        #footer{
+            color: crimson;
+        text-align: center;
+        margin-top: 10em;
+        }
+    </style>
+  </head>
+  <body>
+      <div class="container">
+       <div class="row">    
+           <div class="col-md-6 offset-md-3">   
+               <h1 class="display-4 text-center"> Weight Converter </h1>
+               <form>
+                   <div class="form-group">
+                       <div id="unitMenu">
+                           <!-- Unit Selection Dropdown Menu -->
+                        <select id="unitsMenu" class="form-control from-control-lg rounded-pill">
+                            <option value="1">lbs</option>
+                            <option value="2">Kg</option>
+                            <option value="3">Oz</option>
+                            <option value="4">Grams</option>
+                            <option value="5">Tablespoon</option>
+                            <option value="6">Teaspoon</option>
+                          </select>
+                    <!-- Weight Input Section -->
+                       </div>
+                       <input 
+                       id="weightInput"
+                       min="0"
+                       type="number" class="form-control from-control-lg rounded-pill"
+                       placeholder="Enter Weight...."
+                       >
+                   </div>
+               </form>
+               <!-- Converted Weight Output-->
+               <div id="output">
+
+                   <div class="card bg-danger rounded-pill">
+                       <div class="card-block">
+                           <h4 id="card1"> 1</h4>
+                           
+                       </div>
+                   </div>
+                   
+                   <div class="card bg-primary rounded-pill">
+                    <div class="card-block">
+                        <h4 id="card2"> </h4>
+                        
+                    </div>
+                </div>
+                
+                <div class="card bg-secondary rounded-pill">
+                    <div class="card-block">
+                        <h4 id="card3"> </h4>
+                        
+                    </div>
+                </div>
+
+                   <div class="card bg-warning rounded-pill">
+                    <div class="card-block">
+                        <h4 id="card4"> </h4>
+                    </div>
+                </div>
+                <div class="card bg-info rounded-pill">
+                    <div class="card-block">
+                        <h4 id="card5"></h4>
+                    </div>
+                </div>
+               </div>
+           </div>
+       </div>   
+      </div>
+      <!--Javascript-->
+      <script>
+          document.getElementById('output').style.visibility = 'hidden';
+          document.getElementById('weightInput').addEventListener('input',function(e){
+            document.getElementById('output').style.visibility = 'visible';
+          let weights = e.target.value;
+          
+          let unit = document.getElementById('unitsMenu').value;
+          switch (unit){
+              case '1' :
+              document.getElementById('card1').textContent = 'Grams : ' +  (weights/0.0022046).toFixed(2);
+          document.getElementById('card2').textContent = 'Kilograms : ' +  (weights/2.2046).toFixed(2);
+          document.getElementById('card3').textContent = 'Oz : ' +  (weights*16).toFixed(2);
+          document.getElementById('card4').textContent = 'Teaspoons : ' +  (weights*96).toFixed(2);
+          document.getElementById('card5').textContent = 'Tablespoons : ' +  (weights*32).toFixed(2);
+          break;
+          case '3' :
+              
+              document.getElementById('card1').textContent = 'Grams : ' +  (weights*28.3495).toFixed(2);
+          document.getElementById('card2').textContent = 'lbs : ' +  (weights*0.0625).toFixed(2);
+          document.getElementById('card3').textContent = 'Kilograms : ' +  (weights*0.0283495).toFixed(2);
+          document.getElementById('card4').textContent = 'Teaspoons : ' +  (weights*6).toFixed(2);
+          document.getElementById('card5').textContent = 'Tablespoons : ' +  (weights*2).toFixed(2);
+          break;
+          case '2' :
+              document.getElementById('card1').textContent = 'Grams : ' +  (weights*1000).toFixed(2);
+          document.getElementById('card2').textContent = 'lbs : ' +  (weights*2.2046).toFixed(2);
+          document.getElementById('card3').textContent = 'Oz : ' +  (weights*35.274).toFixed(2);
+          document.getElementById('card4').textContent = 'Teaspoons : ' +  (weights*202.8841362).toFixed(2);
+          document.getElementById('card5').textContent = 'Tablespoons : ' +  (weights*67.6280454).toFixed(2);
+          break;
+          case '4' :
+              document.getElementById('card1').textContent = 'kilograms : ' +  (weights/1000).toFixed(2);
+          document.getElementById('card2').textContent = 'lbs : ' +  (weights*0.00220462).toFixed(2);
+          document.getElementById('card3').textContent = 'Oz : ' +  (weights*0.035274).toFixed(2);
+          document.getElementById('card4').textContent = 'Teaspoons : ' +  (weights*0.238095).toFixed(2);
+          document.getElementById('card5').textContent = 'Tablespoons : ' +  (weights*0.07823685).toFixed(2);
+          break;
+          case '5' :
+              document.getElementById('card1').textContent = 'kilograms : ' +  (weights*0.014786765).toFixed(2);
+          document.getElementById('card2').textContent = 'lbs : ' +  (weights*0.03225806452).toFixed(2);
+          document.getElementById('card3').textContent = 'Oz : ' +  (weights*0.5).toFixed(2);
+          document.getElementById('card4').textContent = 'Teaspoons : ' +  (weights*3).toFixed(2);
+          document.getElementById('card5').textContent = 'Grams : ' +  (weights*15).toFixed(2);
+          break;
+          default:
+          document.getElementById('card1').textContent = 'kilograms : ' +  (weights*0.004928922).toFixed(2);
+          document.getElementById('card2').textContent = 'lbs : ' +  (weights*0.010866412).toFixed(2);
+          document.getElementById('card3').textContent = 'Oz : ' +  (weights*0.166667).toFixed(2);
+          document.getElementById('card4').textContent = 'Tablespoons : ' +  (weights*0.33333).toFixed(2);
+          document.getElementById('card5').textContent = 'Grams : ' +  (weights*5).toFixed(2);
+          }
+          });
+      </script>
+  </body>
+  <!-- the footer section -->
+  <div id="footer">
+      <footer>
+        <h6> &copy; Ahmed Rafi</h3>
+      </footer>
+  </div>
+</html>
